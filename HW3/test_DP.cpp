@@ -81,12 +81,12 @@ void Knapsack_DP(Item items[], int n, int C)//c是最大存储量，n是item的�
                     dp[i][j] = dp[i-1][j];
         }
     }
-     /*for(int i = 0; i < n+1; i++){
+     for(int i = 0; i < n+1; i++){
         for(int j = 0; j < C+1; j++){
             cout << dp[i][j]<<" ";
         }
         cout<<endl;
-    }*/
+    }
     //判断Y还是N
     for(int i = 2;i < (n + 1);i++){
         for(int j = 1 ; j < (C + 1);j++){
@@ -121,7 +121,7 @@ void Knapsack_DP(Item items[], int n, int C)//c是最大存储量，n是item的�
 int main() {
     clock_t Start_time, End_time;
     const int n = 6; // n items, capacity = 300
-    int length, C = 10;
+    int length, C = 12;
 
     ifstream arr;
     arr.open("DP_input.txt");
@@ -130,7 +130,7 @@ int main() {
         cout << "Unable to open file !" << endl;
         return -1;
     }
-    int id, value, size;
+    int id,value, size;
     struct Item items[n];
     int k = 0;
     while (arr >> id >> value >> size) {
@@ -139,10 +139,10 @@ int main() {
         items[k].size = size;
         k++;
     }
-    GreedyMinSize(items, 6, C);
+    //GreedyMinSize(items, 6, C);
     /*for(int i = 0; i < k; i++){
        cout << items[i].id << " " << items[i].val << endl;
     }*/
     //cout<<"- - - --------------------------------"<< endl;
-    //Knapsack_DP(items, 6, C);
+    Knapsack_DP(items, 6, C);
 }
